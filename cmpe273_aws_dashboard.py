@@ -29,13 +29,32 @@ class AWSMetrics:
 		return None
 
     def get_cloudwatch_conn(self):
-    	
-    	
- if __name__ == "__main__":
+	# Connecting with cloudwatch
+	if self.cloudwatch_conn:
+	    return self.cloudwatch_conn
+	else:
+		# boto amazon aws sdk for connecting with AWS
+	    import boto
+	    try:
+		self.cloudwatch_conn = boto.connect_cloudwatch(self.api_key, self.api_secret)
+		return self.cloudwatch_conn
+	    except:
+		print "Wrong API KEY, SECRET combination - Unable to get the cloudwatch connection"
+		return None
+
+
+
+if __name__ == "__main__":
     ACCESS_KEY='AKIAJ4H7QY35TCYBPIRA'
     SECRET='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'
     aws_object = AWSMetrics(ACCESS_KEY, SECRET)
+    print "**********************************************************************************"
+    print "Gettings all the servers which are present in your account "
     aws_object.get_current_instances()
+    print "**********************************************************************************"
+    print "\n\n\n\nGetting the details of the Volumes(Disk) that are attached to the servers:"
     aws_object.get_volumes_attached()
+    print "**********************************************************************************"
+    print "\n\n\n\nGetting the disk usages of the volumes now...:"
     aws_object.get_disk_usage()
-    
+    print "**********************************************************************************"
