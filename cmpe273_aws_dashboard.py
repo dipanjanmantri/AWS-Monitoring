@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+
 class AWSMetrics:
     api_key = None
     api_secret = None
@@ -42,6 +43,41 @@ class AWSMetrics:
 		print "Wrong API KEY, SECRET combination - Unable to get the cloudwatch connection"
 		return None
 
+	# Function to get all the instances 
+    def get_current_instances(self):
+	try:
+	    conn = self.get_ec2_conn()
+	    reservations = conn.get_all_instances()
+	    instances = [i for r in reservations for i in r.instances]
+	    for i in instances:
+		print "InstanceId:%s, Instance Type: %s, Launch Time: %s, Ip Address: %s, Public DNS Name: %s" %(i.id, i.instance_type, i.launch_time, i.ip_address, i.public_dns_name)
+	except Exception, e:
+	    print e
+
+	# Function to get Volume attached
+    def get_volumes_attached(self):
+	conn = self.get_ec2_conn()
+	volumes = conn.get_all_volumes()
+	for x in volumes:
+	    print "VolumeId:%s, Volume Size:%s GB, Volume region: %s, Status: %s" %(x.id, x.size, x.region, x.status)
+
+
+	# Function to get disk usage
+    def get_disk_usage(self):
+	dimensions = {}
+	statistics = ['Sum']
+	conn = self.get_ec2_conn()
+	volumes = conn.get_all_volumes()
+	for x in volumes:
+	    cloudwatch_conn = self.get_cloudwatch_conn()
+	    import datetime
+	    end = datetime.datetime.now()
+	    start = end - datetime.timedelta(hours = 12)
+	    dimensions['VolumeId'] = x.id
+	    metric_name = 'VolumeWriteBytes'
+	    datapoints = cloudwatch_conn.get_metric_statistics(900, start, end, metric_name, 'AWS/EBS', statistics, dimensions,  'Bytes')
+	    for y in datapoints:
+		print "%s: %s %s" %(y['Timestamp'].strftime("%d %b %Y, %H:%M"), y['Sum'], y['Unit'])
 
 
 if __name__ == "__main__":
