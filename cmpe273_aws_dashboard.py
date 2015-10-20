@@ -15,8 +15,8 @@ class AWSMetrics:
 	else:
 	    print "API Key and API Secret is missing - Kindly Check !!!"
 	    return None
-	    
-	    
+
+# Function to get all the instances 
     def get_current_instances(self):
 	try:
 	    conn = self.get_ec2_conn()
@@ -26,8 +26,14 @@ class AWSMetrics:
 		print "InstanceId:%s, Instance Type: %s, Launch Time: %s, Ip Address: %s, Public DNS Name: %s" %(i.id, i.instance_type, i.launch_time, i.ip_address, i.public_dns_name)
 	except Exception, e:
 	    print e
-	    
-	    
+
+# Function to get Volume attached
+    def get_volumes_attached(self):
+	conn = self.get_ec2_conn()
+	volumes = conn.get_all_volumes()
+	for x in volumes:
+	    print "VolumeId:%s, Volume Size:%s GB, Volume region: %s, Status: %s" %(x.id, x.size, x.region, x.status)
+
 
 	    
 if __name__ == "__main__":
@@ -36,5 +42,6 @@ if __name__ == "__main__":
     aws_object = AWSMetrics(ACCESS_KEY, SECRET)
     print "Gettings all the servers which are present in your account "
     aws_object.get_current_instances()
+    aws_object.get_volumes_attached()
    
   
