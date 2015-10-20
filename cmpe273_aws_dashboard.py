@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-
 class AWSMetrics:
     api_key = None
     api_secret = None
@@ -16,32 +15,27 @@ class AWSMetrics:
 	    print "API Key and API Secret is missing - Kindly Check !!!"
 	    return None
 
-# Function to get all the instances 
-    def get_current_instances(self):
-	try:
-	    conn = self.get_ec2_conn()
-	    reservations = conn.get_all_instances()
-	    instances = [i for r in reservations for i in r.instances]
-	    for i in instances:
-		print "InstanceId:%s, Instance Type: %s, Launch Time: %s, Ip Address: %s, Public DNS Name: %s" %(i.id, i.instance_type, i.launch_time, i.ip_address, i.public_dns_name)
-	except Exception, e:
-	    print e
+    def get_ec2_conn(self):
+	# Connecting to the EC2 instances 
+	if self.ec2_conn:
+	    return self.ec2_conn
+	else:
+	    from boto.ec2.connection import EC2Connection
+	    try:
+		self.ec2_conn = EC2Connection(self.api_key, self.api_secret)
+		return self.ec2_conn
+	    except:
+		print "Wrong API KEY and SECRET - Unable to connect"
+		return None
 
-# Function to get Volume attached
-    def get_volumes_attached(self):
-	conn = self.get_ec2_conn()
-	volumes = conn.get_all_volumes()
-	for x in volumes:
-	    print "VolumeId:%s, Volume Size:%s GB, Volume region: %s, Status: %s" %(x.id, x.size, x.region, x.status)
-
-
-	    
-if __name__ == "__main__":
+    def get_cloudwatch_conn(self):
+    	
+    	
+ if __name__ == "__main__":
     ACCESS_KEY='AKIAJ4H7QY35TCYBPIRA'
     SECRET='izxv5KO6O8hazTDeGZV8gUUarWNsXF9UUo3DGEIR'
     aws_object = AWSMetrics(ACCESS_KEY, SECRET)
-    print "Gettings all the servers which are present in your account "
     aws_object.get_current_instances()
     aws_object.get_volumes_attached()
-   
-  
+    aws_object.get_disk_usage()
+    
