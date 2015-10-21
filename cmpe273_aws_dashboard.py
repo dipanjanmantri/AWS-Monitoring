@@ -90,6 +90,23 @@ class AWSMetrics:
 		print "%s: %s %s" %(y['Timestamp'].strftime("%d %b %Y, %H:%M"), y['Sum'], y['Unit'])
 
     
+    # Function to get network op
+    def get_network_op(self):
+	dimensions = {}
+	statistics = ['Average']
+	conn = self.get_ec2_conn()
+	reservations = conn.get_all_instances()
+	instances = [i for r in reservations for i in r.instances]
+	for i in instances:
+	    cloudwatch_conn = self.get_cloudwatch_conn()
+	    import datetime
+	    end = datetime.datetime.now()
+	    start = end - datetime.timedelta(hours = 12)
+	    dimensions['InstanceId'] = i.id
+	    metric_name = 'NetworkIn'
+	    datapoints = cloudwatch_conn.get_metric_statistics(900, start, end, metric_name, 'AWS/EC2', statistics, dimensions,  'Percent')
+	    for y in datapoints:
+		print "%s: %s %s" %(y['Timestamp'].strftime("%d %b %Y, %H:%M"), y['Average'], y['Unit'])
 
 	
 if __name__ == "__main__":
@@ -100,9 +117,11 @@ if __name__ == "__main__":
     print "Gettings all the servers which are present in your account "
     aws_object.get_current_instances()
     print "*************************************************************"
-    print "\n\n\n\nGetting the details of the Volumes(Disk) that are attached to the servers:"
+    print "\n\nnGetting the details of the Volumes(Disk) that are attached to the servers:"
     aws_object.get_volumes_attached()
     print "*************************************************************"
-    print "\n\n\n\nGetting the disk usages of the volumes now...:"
+    print "\n\nGetting the disk usages of the volumes now...:"
     aws_object.get_disk_usage()
     print "*************************************************************"
+    # print "\n\n\n\nGetting the network input on the servers:"
+    # aws_object.get_network_op()
