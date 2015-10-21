@@ -79,7 +79,10 @@ class AWSMetrics:
 	    for y in datapoints:
 		print "%s: %s %s" %(y['Timestamp'].strftime("%d %b %Y, %H:%M"), y['Sum'], y['Unit'])
 
+	
 
+	    
+	
 if __name__ == "__main__":
     ACCESS_KEY='AKIAJ4H7QY35TCYBPIRA'
     SECRET='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'
