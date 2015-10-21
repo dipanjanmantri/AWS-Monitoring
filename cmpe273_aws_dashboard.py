@@ -66,23 +66,6 @@ class AWSMetrics:
 
 
 
-	# Function to get disk usage
-    def get_disk_usage(self):
-	dimensions = {}
-	statistics = ['Sum']
-	conn = self.get_ec2_conn()
-	volumes = conn.get_all_volumes()
-	for x in volumes:
-	    cloudwatch_conn = self.get_cloudwatch_conn()
-	    import datetime
-	    end = datetime.datetime.now()
-	    start = end - datetime.timedelta(hours = 12)
-	    dimensions['VolumeId'] = x.id
-	    metric_name = 'VolumeWriteBytes'
-	    datapoints = cloudwatch_conn.get_metric_statistics(900, start, end, metric_name, 'AWS/EBS', statistics, dimensions,  'Bytes')
-	    for y in datapoints:
-		print "%s: %s %s" %(y['Timestamp'].strftime("%d %b %Y, %H:%M"), y['Sum'], y['Unit'])
-
     
 	
 if __name__ == "__main__":
