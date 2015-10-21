@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-
 class AWSMetrics:
     api_key = None
     api_secret = None
@@ -16,6 +15,7 @@ class AWSMetrics:
 	    print "API Key and API Secret is missing - Kindly Check !!!"
 	    return None
 
+
     def get_ec2_conn(self):
 	# Connecting to the EC2 instances 
 	if self.ec2_conn:
@@ -28,6 +28,7 @@ class AWSMetrics:
 	    except:
 		print "Wrong API KEY and SECRET - Unable to connect"
 		return None
+
 
     def get_cloudwatch_conn(self):
 	# Connecting with cloudwatch
@@ -43,6 +44,7 @@ class AWSMetrics:
 		print "Wrong API KEY, SECRET combination - Unable to get the cloudwatch connection"
 		return None
 
+
 	# Function to get all the instances 
     def get_current_instances(self):
 	try:
@@ -54,12 +56,14 @@ class AWSMetrics:
 	except Exception, e:
 	    print e
 
+
 	# Function to get Volume attached
     def get_volumes_attached(self):
 	conn = self.get_ec2_conn()
 	volumes = conn.get_all_volumes()
 	for x in volumes:
 	    print "VolumeId:%s, Volume Size:%s GB, Volume region: %s, Status: %s" %(x.id, x.size, x.region, x.status)
+
 
 
 	# Function to get disk usage
@@ -79,21 +83,19 @@ class AWSMetrics:
 	    for y in datapoints:
 		print "%s: %s %s" %(y['Timestamp'].strftime("%d %b %Y, %H:%M"), y['Sum'], y['Unit'])
 
-	
-
-	    
+    
 	
 if __name__ == "__main__":
     ACCESS_KEY='AKIAJ4H7QY35TCYBPIRA'
     SECRET='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'
     aws_object = AWSMetrics(ACCESS_KEY, SECRET)
-    print "**********************************************************************************"
+    print "*************************************************************"
     print "Gettings all the servers which are present in your account "
     aws_object.get_current_instances()
-    print "**********************************************************************************"
+    print "*************************************************************"
     print "\n\n\n\nGetting the details of the Volumes(Disk) that are attached to the servers:"
     aws_object.get_volumes_attached()
-    print "**********************************************************************************"
+    print "*************************************************************"
     print "\n\n\n\nGetting the disk usages of the volumes now...:"
     aws_object.get_disk_usage()
-    print "**********************************************************************************"
+    print "*************************************************************"
