@@ -110,8 +110,8 @@ class AWSMetrics:
 
 	
 if __name__ == "__main__":
-    ACCESS_KEY='AKIAJ4H7QY35TCYBPIRA'
-    SECRET='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'
+    ACCESS_KEY='#########'
+    SECRET='#########################'
     aws_object = AWSMetrics(ACCESS_KEY, SECRET)
     print "*************************************************************"
     print "Gettings all the servers which are present in your account "
