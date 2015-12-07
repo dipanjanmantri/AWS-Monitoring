@@ -233,7 +233,7 @@ function postRequests(request, response) {
 
             var namespace;
 
-            //namespace customization
+            // namespaces for default metrics and custom 
             if (String(mini_chunks[3]) == "MemoryUtilization") {
                 namespace = "System/Linux"
             }
