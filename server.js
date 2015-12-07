@@ -74,7 +74,7 @@ function getRequests(request, response) {
     request.addListener('end', function () {
         file_server.serve(request, response, function (error, result) {
             if (error) {
-                console.log("Error Occurred!");
+                console.log("Error Occurred!!!");
             }
         });
 
@@ -157,7 +157,7 @@ function postRequests(request, response) {
                         }
                         else {
                             var tag_list = "";
-                            for (var i = 0; i < data.Tags.length; i++) {
+                            for (var i = 0; i <= data.Tags.length - 1; i++) {
                                 tag_list += data.Tags[i].Key + ": " + data.Tags[i].Value
 
                                 if (i != data.Tags.length - 1) {
@@ -339,7 +339,7 @@ function ClearExpiredTokens() {
     var total_cycles = UserSessions.length;
     var adjustment = 0;
 
-    for (var i = 0; i < total_cycles; i++) {
+    for (var i = 0; i <= total_cycles-1; i++) {
         if (UserSessions[i + adjustment].expiration < current_time) {
             UserSessions.splice(i + adjustment, 1);
             adjustment--;
