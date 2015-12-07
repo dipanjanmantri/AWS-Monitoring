@@ -3,6 +3,7 @@
 The Screen looks similar to this :
 ![ScreenShot](/screenshots/awsConsoleScreenshot.png)
 
+<pre>
 
 Installation and execution
 
@@ -17,3 +18,5 @@ openssl x509 -req -in certrequest.csr -signkey privatekey.pem -out certificate.p
 •	Run the server
 •	node server.js
 •	Put IP address of the remote server in your browser, or just type in 'localhost' if you are testing this on your personal machine. Now you should see a web page ready to accept your AWS login.
+
+</pre>
