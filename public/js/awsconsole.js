@@ -5,7 +5,6 @@
             }
             return -1;
         };
-
     window.PCW = {};
     window.Dashboard = {};
     PCW.instance_list = [];
@@ -33,8 +32,6 @@
             message += document.getElementById('login1').value + ",";
             message += document.getElementById('login2').value + ",";
             message += document.getElementById('login3').value;
-
-
             console.log("@@@@ message => " + message);
 
             //First AWS API call
@@ -44,7 +41,6 @@
                     if (request.status !== 200) {
                         console.log(" ERROR!! AWS has declined this login.   Reason: " + request.responseText);
                         return;
-
                     } else {
                         temp = request.responseText.split(";"); // splitting response by ;
                         PCW.user_token = temp[0];
@@ -54,8 +50,6 @@
                         for (i = _i = 3, _ref = temp.length - 1; 3 <= _ref ? _i <= _ref : _i >= _ref; i = 3 <= _ref ? ++_i : --_i) {
                             PCW.match_list.push(PCW.instance_list[i] + "," + temp[i]);
                         }
-
-
                         PCW.instance_list.sort(); //sorting instance list
                         PCW.tag_list.sort(); //sorting tag list
 
@@ -76,20 +70,14 @@
             };
             return request.send(message);
         }
-
-
         else {
             window.alert(" ERROR Login cannot be accomplished without complete credentials.");
             return;
         }
     };
-
-
     Dashboard.ToggleDialog = function (name) {
         return document.getElementById(name).toggle();
     };
-
-
     //function to delete duplicate tags coming from AWS
     Dashboard.DeleteDuplicateTags = function () {
         var hold, i, temp_list, _i, _ref;
@@ -98,7 +86,6 @@
             hold = PCW.tag_list[0];
             for (i = _i = 1, _ref = PCW.tag_list.length - 1; 1 <= _ref ? _i <= _ref : _i >= _ref; i = 1 <= _ref ? ++_i : --_i) {
                 if (PCW.tag_list[i] === hold) {
-
                 } else {
                     temp_list.push(hold);
                     hold = PCW.tag_list[i];
@@ -110,8 +97,6 @@
             return PCW.tag_list = temp_list;
         }
     };
-
-
     //module to login into AWS
     PCW.AWSDataController = function () {
         PCW.AWSLogin();
@@ -141,8 +126,6 @@
         memory_threshold = 12;
         return;
     };
-
-
     //to link tags to instances from AWS
     PCW.LinkTagsToInstances = function () {
         var bar, foo, instance_id, obj, temp, x, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
@@ -194,7 +177,6 @@
             return;
         }
 
-
         //bar loop
         for (i = _j = 0, _ref1 = PCW.metric_pull_list.length - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
             bar = document.createElement('paper-progress');
@@ -208,7 +190,6 @@
             target.appendChild(bar);
         }
 
-
         PCW.final_series = [];
         request = new XMLHttpRequest();
         request.open("POST", "/pull_metrics", true);
@@ -217,7 +198,6 @@
         PCW.metric_index = 0;
         return PCW.CallAmazon(request, message);
     };
-
 
     //To make a call to Amazon
     PCW.CallAmazon = function (request, message) {
@@ -275,7 +255,6 @@
         message += start + "," + end + ",";
 
         //resolution_minutes
-
         temp = 5 * 60;
 
         if (temp < 60) {
@@ -285,7 +264,6 @@
             temp = 604800;
         }
         message += temp;
-
 
         PCW.time_parameters = message;
         message = "";
@@ -304,8 +282,6 @@
 
         selector = document.getElementById('metricSelector');
         PCW.metric_pull_list = [];
-
-
         var metrics_array = ["CPUUtilization", "DiskReadOps", "DiskWriteOps", "DiskReadBytes",
             "DiskWriteBytes", "NetworkIn", "NetworkOut", "MemoryUtilization"];
 
@@ -320,7 +296,6 @@
         }
         return message;
     };
-
 
     //this function to parse response coming from server side
     PCW.ParseResponse = function (response_string) {
@@ -381,7 +356,6 @@
         }
     };
 
-
     //to draw the plot on UI
     PCW.DrawPlot = function () {
         var d, e, name, params, temp, time_range, ylabel;
@@ -390,7 +364,6 @@
         d = new Date(time_range);
         e = new Date();
         time_range = e.getTime() - d.getTime();
-
 
         if ((PCW.metric_pull_list[PCW.metric_index] === "CPUUtilization" ) || (PCW.metric_pull_list[PCW.metric_index] === "MemoryUtilization" )) {
             ylabel = "Percentage";
