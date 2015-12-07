@@ -15,7 +15,7 @@
     TIMEOUT_PEROID = 2000;
     REFRESH_PERIOD = 25000;
 
-//function which enables user to login using AWS credentials 
+//Enables user to login using AWS credentials 
     PCW.AWSLogin = function () {
 
         var foo_1, foo_2, foo_3, message, request;
