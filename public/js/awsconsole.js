@@ -71,7 +71,7 @@
             return request.send(message);
         }
         else {
-            window.alert(" ERROR Login cannot be accomplished without complete credentials.");
+            window.alert("ERROR Login cannot be accomplished without complete credentials.");
             return;
         }
     };
@@ -205,8 +205,6 @@
             var bar_id;
             if (request.readyState === 4) {
                 if (request.status !== 200) {
-                    // document.getElementById('toastMessage').text = "Apologies. Something went wrong...   Reason: " + request.responseText;
-                    //return document.getElementById('toastMessage').show();
                     window.alert(" Apologies. Something went wrong...   Reason: " + request.responseText);
                 } else {
                     PCW.ParseResponse(request.responseText);
