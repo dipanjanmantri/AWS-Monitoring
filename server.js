@@ -1,4 +1,4 @@
-//Dependencies 
+//Dependencies for the build  
 var https = require("https");
 var http = require("http");
 var url = require("url");
@@ -269,7 +269,7 @@ function postRequests(request, response) {
                     for (var i = 0; i < data.Datapoints.length; i++) {
                         message += data.Datapoints[i].Timestamp + "," + data.Datapoints[i].Average;
 
-                        //Sending message to the configured mobile no using Twillio
+                        //Sending message to the configured mobile number using Twillio service 
                         if ((data.Datapoints[i].Average > config.memoryThreshold && data.Datapoints[i].Unit == 'Percent' && mini_chunks[3] == "MemoryUtilization" ) || (data.Datapoints[i].Average > config.cpuThreshold && data.Datapoints[i].Unit == 'Percent' && mini_chunks[3] == "CPUUtilization" )) {
                             client.messages.create({
                                 to: "6692219819",
@@ -288,7 +288,7 @@ function postRequests(request, response) {
                         }
                     }
                     response.writeHead(200);
-                    response.write(message); // message rendered to client
+                    response.write(message); // message rendered to the client
                     response.end();
                 }
             });
@@ -298,7 +298,7 @@ function postRequests(request, response) {
 }
 
 /**
- * Standalone function to generate user token for authentication
+ * Standalone function to generate user token for authentication purpose
  */
 
 function GenerateToken() {
@@ -329,7 +329,7 @@ function GenerateToken() {
 }
 
 /**
- // Function to clear the expired tokens
+ // Function to clear expired tokens
  */
 
 function ClearExpiredTokens() {
