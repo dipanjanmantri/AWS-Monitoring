@@ -1,5 +1,8 @@
 # CMPE273-AWS-Project
 
+The Screen looks similar to this :
+![ScreenShot](/screenshots/awsConsoleScreenshot.png)
+
 Installation and execution
 
 •	First Install Node.js and npm
