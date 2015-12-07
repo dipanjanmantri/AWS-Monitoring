@@ -11,13 +11,11 @@ var config = require('./config/config');
 
 var client = new twilio.RestClient(config.accountSid, config.authToken);
 
-
 // Loading private key and certificate for HTTPS request which allows us to create a secure connection
 options = {
     key: fs.readFileSync('./pemfiles/private-key.pem'),
     cert: fs.readFileSync('./pemfiles/certificate.pem')
 }
-
 
 // Creating a static public file server with the help of node-static module
 var file_server = new node_static.Server('./public');
@@ -26,7 +24,6 @@ var UserSessions = [];
 
 // Set the byte length of key-forge module token.
 var key_size = 32;
-
 
 /**
  * Function to check for unsecured HTTP connection
@@ -42,7 +39,6 @@ function OnUnsecuredRequest(request, response) {
     );
     response.end();
 }
-
 
 /**
  *  Function to control the Server's response methods - GET and POST
@@ -64,7 +60,6 @@ function OnRequest(request, response) {
     }
 }
 
-
 /**
  * Function for managing requests
  */
@@ -85,7 +80,6 @@ function getRequests(request, response) {
 
     }).resume();
 }
-
 
 /**
  * Handles POST request
@@ -302,7 +296,6 @@ function postRequests(request, response) {
     }
 
 }
-
 
 /**
  * Standalone function to generate user token for authentication
