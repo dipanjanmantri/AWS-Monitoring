@@ -23,6 +23,6 @@ Now you should see a web page ready to accept your AWS login.
 <pre>
 Configuration
 
-•	Under config folder, use config.js file to custimize the memory and cpu threshold for alert notifications
+•	Under config folder, use config.js file to customize the memory and cpu threshold for alert notifications
 •	AccountSid and authid, need to be provided for twilio service.
 </pre>
