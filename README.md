@@ -1,6 +1,6 @@
 # CMPE273-AWS-Project
 
-The Screen looks similar to this :
+Screenshot of the Login page:
 ![ScreenShot](/screenshots/awsConsoleScreenshot.png)
 
 <pre>
