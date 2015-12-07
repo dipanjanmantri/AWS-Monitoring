@@ -26,3 +26,14 @@ Configuration
 •	Under config folder, use config.js file to customize the memory and cpu threshold for alert notifications
 •	AccountSid and authid, need to be provided for twilio service.
 </pre>
+
+
+<pre>
+Technologies Used
+
+Node.js http://www.nodejs.org
+Node Community Modules: 'aws-sdk', 'key-forge', 'node-static', 'twilio'
+Boootstrap http://getbootstrap.com/
+jQuery https://jquery.com/
+HighCharts http://http://www.highcharts.com/
+</pre>
