@@ -11,11 +11,11 @@
     PCW.tag_list = [];
     PCW.match_list = [];
 
-//constants for refreshing the UI after the specific time period
+//constants for refreshing the UI after the some time period
     TIMEOUT_PEROID = 2000;
     REFRESH_PERIOD = 25000;
 
-//function to login AWS
+//function which enables user to login using AWS credentials 
     PCW.AWSLogin = function () {
 
         var foo_1, foo_2, foo_3, message, request;
@@ -39,7 +39,7 @@
                 var i, temp, _i, _ref;
                 if (request.readyState === 4) {
                     if (request.status !== 200) {
-                        console.log(" ERROR!! AWS has declined this login.   Reason: " + request.responseText);
+                        console.log(" ERROR!! AWS has declined the login.   Reason: " + request.responseText);
                         return;
                     } else {
                         temp = request.responseText.split(";"); // splitting response by ;
