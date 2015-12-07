@@ -22,7 +22,7 @@ var file_server = new node_static.Server('./public');
 
 var UserSessions = [];
 
-// Set the byte length of key-forge module token.
+// Setting the byte length of key-forge module token.
 var key_size = 32;
 
 /**
@@ -41,7 +41,7 @@ function OnUnsecuredRequest(request, response) {
 }
 
 /**
- *  Function to control the Server's response methods - GET and POST
+ *  Function to control the Server response methods - GET and POST
  */
 
 function OnRequest(request, response) {

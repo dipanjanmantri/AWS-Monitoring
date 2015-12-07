@@ -61,7 +61,7 @@
                         document.getElementById('login2').value = "";
                         document.getElementById('login3').value = "";
 
-                        console.log("Success!  Connection established.");
+                        console.log("Connection established successfully!.");
                         document.getElementById('custom_navbar').style.display = "block";
                         return document.getElementById('plot_graphs').style.display = "block";
                         //return;
@@ -78,7 +78,7 @@
     Dashboard.ToggleDialog = function (name) {
         return document.getElementById(name).toggle();
     };
-    //function to delete duplicate tags coming from AWS
+    //delete duplicate tags coming from AWS
     Dashboard.DeleteDuplicateTags = function () {
         var hold, i, temp_list, _i, _ref;
         if (PCW.tag_list.length > 1) {
@@ -115,7 +115,7 @@
         }, REFRESH_PERIOD);
     };
 
-    //Retrieves data to feed into dashboard
+    //Retrieves data to fed into dashboard
     PCW.GetDashBoardData = function () {
         var no_of_msg, no_of_instances, memory_threshold, cpu_threshold, temp_dash;
         no_of_msg = 10;
@@ -177,7 +177,7 @@
             return;
         }
 
-        //bar loop
+        //bar loop for showing the progress
         for (i = _j = 0, _ref1 = PCW.metric_pull_list.length - 1; 0 <= _ref1 ? _j <= _ref1 : _j >= _ref1; i = 0 <= _ref1 ? ++_j : --_j) {
             bar = document.createElement('paper-progress');
             bar.id = "download_bar_" + i;
