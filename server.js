@@ -246,7 +246,8 @@ function postRequests(request, response) {
             else {
                 namespace = "AWS/EC2"
             }
-
+            
+			// params to be used as argument in get metric statistics 
             var params = {
                 StartTime: String(time[0]),
                 EndTime: String(time[1]),
