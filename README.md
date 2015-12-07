@@ -18,5 +18,11 @@ Installation and execution
 •	Put IP address of the remote server in your browser, or just type in 'localhost' if you are testing this on your personal machine. 
 
 Now you should see a web page ready to accept your AWS login.
+</pre>
 
+<pre>
+Configuration
+
+•	Under config folder, use config.js file to custimize the memory and cpu threshold for alert notifications
+•	AccountSid and authid, need to be provided for twilio service.
 </pre>
