@@ -50,7 +50,7 @@ function OnRequest(request, response) {
         getRequests(request, response);
     }
     else if (request.method == "POST") {
-        // Calling AWS with the credentials
+    // Calling AWS with the credentials
         postRequests(request, response)
     }
     else {
