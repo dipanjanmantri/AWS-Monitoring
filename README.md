@@ -5,8 +5,6 @@ Screenshot of the Login page:
 
 ##Installation and execution
 <pre>
-
-
 •	First Install Node.js and npm
 •	Clone this repository
 •	Install all the dependencies ===> npm install
@@ -22,7 +20,6 @@ Now you should see a web page ready to accept your AWS login.
 
 ##Configuration
 <pre>
-
 •	Under config folder, use config.js file to customize the memory and cpu threshold for alert notifications
 •	AccountSid and authid, need to be provided for twilio service.
 </pre>
@@ -30,7 +27,6 @@ Now you should see a web page ready to accept your AWS login.
 
 ##Technologies Used
 <pre>
-
 Node.js http://www.nodejs.org
 Node Community Modules: 'aws-sdk', 'key-forge', 'node-static', 'twilio'
 Boootstrap http://getbootstrap.com/
