@@ -1,0 +1,5 @@
+{"memoryThreshold": 7,
+  "cpuThreshold": 10,
+  "accountSid":"Your AWS account sid",
+  "authToken":"Your AWS account auth token"
+}
