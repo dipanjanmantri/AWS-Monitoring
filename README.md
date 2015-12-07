@@ -35,5 +35,5 @@ Node.js http://www.nodejs.org
 Node Community Modules: 'aws-sdk', 'key-forge', 'node-static', 'twilio'
 Boootstrap http://getbootstrap.com/
 jQuery https://jquery.com/
-HighCharts http://http://www.highcharts.com/
+HighCharts http://www.highcharts.com/
 </pre>
