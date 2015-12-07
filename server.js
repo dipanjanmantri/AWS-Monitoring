@@ -1,4 +1,4 @@
-//Imported modules
+//Dependencies 
 var https = require("https");
 var http = require("http");
 var url = require("url");
@@ -74,7 +74,7 @@ function getRequests(request, response) {
     request.addListener('end', function () {
         file_server.serve(request, response, function (error, result) {
             if (error) {
-                console.log("Error Occurred");
+                console.log("Error Occurred!");
             }
         });
 
@@ -104,7 +104,7 @@ function postRequests(request, response) {
                 sslEnabled: true
             }
 
-            //Generating new token for each new user
+            //Generating new token for every new user
             var generated_token = GenerateToken();
 
             // Connecting to the AWS Ec2
