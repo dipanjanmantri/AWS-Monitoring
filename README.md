@@ -10,7 +10,7 @@ Screenshot of the AWS console graphs:
 
 ![ScreenShot](/screenshots/awsConsoleGraphs.png)
 
-Screenshot of the AWS console graphs:
+Screenshot of the AWS console in when accessed through mobile:
 
 
 ![ScreenShot](/screenshots/mobileScreenshot.png) {width=40px height=400px}) 
