@@ -3,6 +3,10 @@
 Screenshot of the Login page:
 ![ScreenShot](/screenshots/awsConsoleScreenshot.png)
 
+Screenshot of the AWS console graphs:
+![ScreenShot](/screenshots/awsConsoleGraphs)
+
+
 ##Installation and execution
 <pre>
 •	First Install Node.js and npm
