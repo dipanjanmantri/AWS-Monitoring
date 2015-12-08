@@ -1,12 +1,10 @@
 # CMPE273-AWS-Project
 
-The Screen looks similar to this :
+Screenshot of the Login page:
 ![ScreenShot](/screenshots/awsConsoleScreenshot.png)
 
+##Installation and execution
 <pre>
-
-Installation and execution
-
 •	First Install Node.js and npm
 •	Clone this repository
 •	Install all the dependencies ===> npm install
@@ -20,17 +18,15 @@ Installation and execution
 Now you should see a web page ready to accept your AWS login.
 </pre>
 
+##Configuration
 <pre>
-Configuration
-
 •	Under config folder, use config.js file to customize the memory and cpu threshold for alert notifications
 •	AccountSid and authid, need to be provided for twilio service.
 </pre>
 
 
+##Technologies Used
 <pre>
-Technologies Used
-
 Node.js http://www.nodejs.org
 Node Community Modules: 'aws-sdk', 'key-forge', 'node-static', 'twilio'
 Boootstrap http://getbootstrap.com/
