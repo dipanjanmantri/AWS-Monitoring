@@ -1,10 +1,19 @@
 # CMPE273-AWS-Project
 
 Screenshot of the Login page:
+
+
 ![ScreenShot](/screenshots/awsConsoleScreenshot.png)
 
 Screenshot of the AWS console graphs:
+
+
 ![ScreenShot](/screenshots/awsConsoleGraphs.png)
+
+Screenshot of the AWS console graphs:
+
+
+![ScreenShot](/screenshots/mobileScreenshot.png)
 
 
 ##Installation and execution
