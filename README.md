@@ -13,7 +13,7 @@ Screenshot of the AWS console graphs:
 Screenshot of the AWS console in when accessed through mobile:
 
 
-![ScreenShot](/screenshots/mobileScreenshot.png) {width=40px height=400px}) 
+![ScreenShot](/screenshots/mobileScreenshot.png)  
 
 
 ##Installation and execution
