@@ -13,7 +13,7 @@ Screenshot of the AWS console graphs:
 Screenshot of the AWS console graphs:
 
 
-![ScreenShot](/screenshots/mobileScreenshot.png)
+![ScreenShot](/screenshots/mobileScreenshot.png = 250x250)
 
 
 ##Installation and execution
