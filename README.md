@@ -4,7 +4,7 @@ Screenshot of the Login page:
 ![ScreenShot](/screenshots/awsConsoleScreenshot.png)
 
 Screenshot of the AWS console graphs:
-![ScreenShot](/screenshots/awsConsoleGraphs)
+![ScreenShot](/screenshots/awsConsoleGraphs.png)
 
 
 ##Installation and execution
